@@ -49,7 +49,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
   font-family: "Newsreader", serif;
   font-size: 1.15rem; font-weight: 500; color: var(--ink);
 }
-.topbar__nav { display: flex; gap: 1.25rem; }
+.topbar__nav { display: flex; gap: 1rem 1.25rem; flex-wrap: wrap; }
 .topbar__nav a {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.78rem; letter-spacing: 0.02em; text-transform: lowercase;
@@ -129,7 +129,29 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2r
   margin: 0.6rem 0 0; font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65;
 }
 
+/* --- Service and presentations ------------------------------------------ */
+.service-list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 0.45rem;
+  color: var(--ink-soft);
+}
+.presentation-list {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
 /* --- Teaching ------------------------------------------------------------ */
+.section-details { margin: 0; }
+.section-details > summary {
+  cursor: pointer; width: fit-content;
+  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);
+}
+.section-details > summary:hover { text-decoration: underline; }
+.section-details[open] > summary { margin-bottom: 1.25rem; }
+.section-details .group:first-of-type { margin-top: 0; }
 .teaching { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
 .teaching li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
 .teaching__role {
