@@ -72,14 +72,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2r
 .portrait {
   width: 132px; height: 132px; border-radius: 4px;
   background: #ecebe6 center / cover no-repeat;
+  background-image: url("photo.jpg");   /* ← add this line */
   border: 1px solid var(--rule);
   position: relative; overflow: hidden;
 }
-.portrait::after {            /* monogram placeholder until a real photo is set */
-  content: "潘"; position: absolute; inset: 0;
-  display: grid; place-items: center;
-  font-family: "Newsreader", serif; font-size: 3rem; color: #b9b7af;
-}
+
 .about__name {
   font-family: "Newsreader", serif;
   font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.5rem);
