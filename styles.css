@@ -1,177 +1,629 @@
 /* ===========================================================================
-   Qingsong Pan — academic homepage
-   Design: ink on paper, editorial serif headings (Newsreader), clean body
-   (Inter), and precise monospace (IBM Plex Mono) for paper status/metadata —
-   a quiet nod to the computational side of structural econometrics.
+   Qingsong Pan academic homepage
+   Direction: refined editorial CV, quiet research-first hierarchy.
    =========================================================================== */
 
 :root {
-  --paper:      #fcfcfb;
-  --ink:        #1c1c1a;
-  --ink-soft:   #4a4a46;
-  --rule:       #e5e4df;
-  --accent:     #1d3a4f;   /* deep petrol blue */
-  --accent-rr:  #7a3b2e;   /* warm sienna, reserved for R&R badges */
-  --maxw:       760px;
-  --gap:        clamp(2.5rem, 6vw, 4.5rem);
+  --paper: #faf8f2;
+  --paper-warm: #f3efe5;
+  --surface: #fffdf8;
+  --surface-muted: #f6f1e8;
+  --ink: #171713;
+  --ink-soft: #57534b;
+  --ink-muted: #7a7468;
+  --rule: #dfd7c9;
+  --rule-strong: #c9bda9;
+  --accent: #234f65;
+  --accent-deep: #153747;
+  --accent-warm: #8a4034;
+  --accent-olive: #596744;
+  --shadow: 0 18px 44px rgba(50, 43, 31, 0.08);
+  --maxw: 940px;
+  --contentw: 760px;
+  --gap: clamp(3rem, 7vw, 5rem);
+  --pad: clamp(1.25rem, 5vw, 2.25rem);
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
 
 body {
   margin: 0;
-  background: var(--paper);
+  overflow-x: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0) 15rem),
+    linear-gradient(90deg, rgba(35, 79, 101, 0.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: auto, 72px 72px, auto;
   color: var(--ink);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 2px; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+body::selection {
+  background: rgba(35, 79, 101, 0.16);
+}
 
-/* --- Top bar ------------------------------------------------------------- */
+a {
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-decoration-color: rgba(35, 79, 101, 0.24);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Top bar */
 .topbar {
-  position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 1rem; flex-wrap: wrap;
-  padding: 1rem clamp(1.25rem, 5vw, 2rem);
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.86rem max(var(--pad), calc((100vw - var(--maxw)) / 2 + var(--pad)));
+  background: rgba(250, 248, 242, 0.9);
+  border-bottom: 1px solid rgba(201, 189, 169, 0.72);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72) inset;
+}
+
+.topbar__name {
+  color: var(--ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.topbar__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.28rem 0.42rem;
+}
+
+.topbar__nav a {
+  padding: 0.32rem 0.48rem;
+  color: var(--ink-soft);
+  border-radius: 5px;
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.topbar__nav a:hover {
+  background: rgba(35, 79, 101, 0.07);
+  color: var(--accent-deep);
+}
+
+/* Layout */
+main {
+  width: min(100%, var(--maxw));
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.section {
+  width: min(100%, var(--contentw));
+  min-width: 0;
+  margin: 0 auto;
+  padding-top: var(--gap);
+}
+
+/* About */
+.about {
+  position: relative;
+  display: grid;
+  grid-template-columns: 176px minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 3rem);
+  align-items: start;
+  padding: clamp(3.5rem, 8vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4rem);
   border-bottom: 1px solid var(--rule);
 }
-.topbar__name {
-  font-family: "Newsreader", serif;
-  font-size: 1.15rem; font-weight: 500; color: var(--ink);
-}
-.topbar__nav { display: flex; gap: 1rem 1.25rem; flex-wrap: wrap; }
-.topbar__nav a {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem; letter-spacing: 0.02em; text-transform: lowercase;
-  color: var(--ink-soft);
-}
-.topbar__nav a:hover { color: var(--accent); text-decoration: none; }
 
-/* --- Layout shell -------------------------------------------------------- */
-main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2rem); }
-.section { padding-top: var(--gap); }
-
-/* --- About --------------------------------------------------------------- */
-.about {
-  display: grid;
-  grid-template-columns: 148px 1fr;
-  gap: clamp(1.25rem, 4vw, 2.25rem);
-  align-items: start;
-  padding-top: clamp(2.5rem, 7vw, 4rem);
+.about::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  width: min(54%, 420px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-warm));
 }
+
 .portrait {
-  width: 148px; height: 148px; border-radius: 4px;
-  background: #ecebe6 center / cover no-repeat;
-  background-image: url("photo.jpg");   /* ← add this line */
-  border: 1px solid var(--rule);
-  position: relative; overflow: hidden;
+  width: 176px;
+  height: 176px;
+  border: 1px solid rgba(201, 189, 169, 0.9);
+  border-radius: 6px;
+  background: #ebe6da center / cover no-repeat;
+  background-image: url("photo.jpg");
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.about__body {
+  min-width: 0;
+  max-width: 680px;
 }
 
 .about__name {
-  font-family: "Newsreader", serif;
-  font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.5rem);
-  line-height: 1.1; margin: 0 0 0.35rem;
-}
-.about__name span[lang="zh"] { color: var(--ink-soft); font-weight: 400; }
-.about__role { margin: 0 0 1.1rem; color: var(--ink-soft); font-size: 1rem; }
-.about__bio { margin: 0 0 1.4rem; }
-
-.links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
-.links__key {
-  display: inline-block; min-width: 84px;
-  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
-  text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft);
+  margin: 0 0 0.42rem;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(2.35rem, 6vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.98;
+  overflow-wrap: anywhere;
 }
 
-/* --- Section headings ---------------------------------------------------- */
-.section__title {
-  font-family: "Newsreader", serif; font-weight: 500;
-  font-size: 1.6rem; margin: 0 0 1.5rem;
-  padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule);
-}
-.group {
-  font-family: "IBM Plex Mono", monospace; font-weight: 500;
-  font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--ink-soft); margin: 2rem 0 0.9rem;
-}
-
-/* --- Papers -------------------------------------------------------------- */
-.papers { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.6rem; }
-.paper__title { margin: 0; font-size: 1.05rem; font-weight: 500; line-height: 1.4; }
-.paper__byline { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.95rem; }
-.paper__meta { margin: 0.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.tag {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.7rem; letter-spacing: 0.02em;
-  padding: 0.2rem 0.5rem; border-radius: 3px;
-  background: #efeee9; color: var(--ink-soft);
-}
-.tag--rr { background: color-mix(in srgb, var(--accent-rr) 12%, transparent); color: var(--accent-rr); }
-
-.paper__abstract { margin: 0.55rem 0 0; }
-.paper__abstract summary {
-  cursor: pointer; width: fit-content;
-  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
-  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);
-}
-.paper__abstract summary:hover { text-decoration: underline; }
-.paper__abstract p {
-  margin: 0.6rem 0 0; font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65;
-}
-
-/* --- Service and presentations ------------------------------------------ */
-.service-list {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; gap: 0.45rem;
+.about__name span[lang="zh"] {
   color: var(--ink-soft);
+  font-weight: 400;
+  white-space: nowrap;
 }
+
+.about__role {
+  margin: 0 0 1.25rem;
+  color: var(--accent-deep);
+  font-size: 1.02rem;
+  font-weight: 500;
+}
+
+.about__bio {
+  margin: 0 0 1.6rem;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: 1.03rem;
+  overflow-wrap: anywhere;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.links li {
+  min-width: 0;
+  padding: 0.78rem 0.95rem;
+  border-right: 1px solid var(--rule);
+}
+
+.links li:first-child {
+  padding-left: 0;
+}
+
+.links li:last-child {
+  border-right: 0;
+}
+
+.links a {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.links__key {
+  display: block;
+  margin-bottom: 0.12rem;
+  color: var(--ink-muted);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Section headings */
+.section__title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  margin: 0 0 1.55rem;
+  color: var(--ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(1.75rem, 4vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.section__title::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg, var(--rule-strong), transparent);
+}
+
+.group {
+  margin: 2.2rem 0 0.95rem;
+  color: var(--ink-muted);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.section__title + .group {
+  margin-top: 0;
+}
+
+/* Papers */
+.papers {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: paper;
+}
+
+.paper {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+  counter-increment: paper;
+  padding: 1.18rem 1.22rem 1.12rem 3.65rem;
+  border: 1px solid rgba(223, 215, 201, 0.9);
+  border-left: 3px solid rgba(35, 79, 101, 0.62);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.72);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
+}
+
+.paper::before {
+  content: counter(paper, decimal-leading-zero);
+  position: absolute;
+  top: 1.24rem;
+  left: 1.08rem;
+  color: var(--ink-muted);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.paper__title {
+  margin: 0;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.24rem;
+  font-weight: 500;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+.paper__title a {
+  color: var(--ink);
+  text-decoration-color: rgba(35, 79, 101, 0.28);
+  overflow-wrap: anywhere;
+}
+
+.paper__title a:hover {
+  color: var(--accent-deep);
+}
+
+.paper__byline {
+  margin: 0.42rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+}
+
+.paper__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.62rem 0 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.54rem;
+  padding: 0.16rem 0.48rem;
+  border: 1px solid rgba(201, 189, 169, 0.9);
+  border-radius: 4px;
+  background: var(--surface-muted);
+  color: var(--ink-soft);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.tag--rr {
+  border-color: rgba(138, 64, 52, 0.28);
+  background: rgba(138, 64, 52, 0.08);
+  color: var(--accent-warm);
+}
+
+.paper__abstract {
+  margin: 0.72rem 0 0;
+}
+
+.paper__abstract summary,
+.section-details > summary {
+  cursor: pointer;
+  width: fit-content;
+  color: var(--accent-deep);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.paper__abstract summary:hover,
+.section-details > summary:hover {
+  color: var(--accent);
+}
+
+.paper__abstract p {
+  margin: 0.68rem 0 0;
+  padding-top: 0.72rem;
+  border-top: 1px solid rgba(223, 215, 201, 0.8);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.72;
+}
+
+/* Service and presentations */
+.service-list {
+  display: grid;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.service-list li {
+  padding: 0.72rem 0.95rem;
+  border-left: 3px solid var(--accent-olive);
+  background: rgba(255, 253, 248, 0.62);
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
 .presentation-list {
   margin: 0;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid rgba(35, 79, 101, 0.35);
   color: var(--ink-soft);
   font-size: 0.98rem;
-  line-height: 1.65;
+  line-height: 1.78;
 }
 
-/* --- Teaching ------------------------------------------------------------ */
-.section-details { margin: 0; }
-.section-details > summary {
-  cursor: pointer; width: fit-content;
-  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
-  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);
+.presentation-list + .group {
+  margin-top: 2.2rem;
 }
-.section-details > summary:hover { text-decoration: underline; }
-.section-details[open] > summary { margin-bottom: 1.25rem; }
-.section-details .group:first-of-type { margin-top: 0; }
-.teaching { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
-.teaching li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
-.teaching__role {
-  font-family: "IBM Plex Mono", monospace; font-size: 0.68rem;
-  text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft);
-  min-width: 56px;
-}
-.teaching__note { color: var(--ink-soft); font-size: 0.88rem; }
 
-/* --- Footer -------------------------------------------------------------- */
-.footer {
-  max-width: var(--maxw); margin: var(--gap) auto 0;
-  padding: 2rem clamp(1.25rem, 5vw, 2rem) 3rem;
+/* Teaching */
+.section-details {
+  margin: 0;
+  padding: 1.1rem 0 0;
   border-top: 1px solid var(--rule);
-  font-size: 0.85rem; color: var(--ink-soft);
 }
-.footer p { margin: 0; }
 
-/* --- Mobile -------------------------------------------------------------- */
+.section-details[open] > summary {
+  margin-bottom: 1.4rem;
+}
+
+.section-details .group:first-of-type {
+  margin-top: 0;
+}
+
+.teaching {
+  display: grid;
+  gap: 0.58rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.teaching li {
+  display: grid;
+  grid-template-columns: 5.8rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: baseline;
+  color: var(--ink-soft);
+}
+
+.teaching__role {
+  color: var(--ink-muted);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.teaching__note {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+  width: min(100%, var(--contentw));
+  margin: var(--gap) auto 0;
+  padding: 1.8rem var(--pad) 3.2rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .topbar {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .topbar__nav {
+    justify-content: flex-start;
+  }
+
+  .about {
+    grid-template-columns: 140px minmax(0, 1fr);
+  }
+
+  .portrait {
+    width: 140px;
+    height: 140px;
+  }
+
+  .links {
+    grid-template-columns: 1fr;
+  }
+
+  .links li,
+  .links li:first-child {
+    padding: 0.72rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .links li:last-child {
+    border-bottom: 0;
+  }
+}
+
 @media (max-width: 560px) {
-  .about { grid-template-columns: 1fr; }
-  .portrait { width: 116px; height: 116px; }
+  body {
+    font-size: 16px;
+    background-size: auto, 56px 56px, auto;
+  }
+
+  main,
+  .footer {
+    width: 100vw;
+    max-width: 100vw;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section,
+  .about,
+  .about__body,
+  .links,
+  .papers,
+  .paper {
+    width: calc(100vw - 3rem);
+    max-width: calc(100vw - 3rem);
+  }
+
+  .topbar {
+    position: static;
+  }
+
+  .topbar__nav a {
+    padding-left: 0;
+    padding-right: 0.4rem;
+    font-size: 0.68rem;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    padding-top: 2.7rem;
+  }
+
+  .portrait {
+    width: 128px;
+    height: 128px;
+  }
+
+  .about__name {
+    font-size: 2.02rem;
+    line-height: 1.06;
+  }
+
+  .about__name span[lang="zh"] {
+    display: block;
+    margin-top: 0.12rem;
+    white-space: normal;
+  }
+
+  .about__role {
+    font-size: 0.98rem;
+    overflow-wrap: anywhere;
+  }
+
+  .section__title {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .paper {
+    padding: 1rem 1rem 1rem 1.05rem;
+  }
+
+  .paper::before {
+    position: static;
+    display: block;
+    margin-bottom: 0.42rem;
+  }
+
+  .paper__title {
+    font-size: 1.08rem;
+  }
+
+  .teaching li {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
 }
