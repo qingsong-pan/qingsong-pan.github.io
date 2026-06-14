@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260611">
+<link rel="stylesheet" href="styles.css?v=20260614">
 </head>
 <body>
 
@@ -45,6 +45,27 @@
         <li><span class="links__key">CV</span> <a href="pdfs/cv.pdf">Curriculum Vitae (PDF)</a></li>
         <li><span class="links__key">Statement</span> <a href="pdfs/research-statement.pdf">Research Statement (PDF)</a></li>
       </ul>
+
+      <div class="profile-links" aria-label="Professional profiles">
+        <a class="profile-link" href="https://scholar.google.com/citations?user=L5I0oCIAAAAJ&amp;hl=en" rel="me">
+          <svg class="profile-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3 2.75 8.1 12 13.2l9.25-5.1L12 3Z"></path>
+            <path d="M6.5 11.05v4.35c0 1.45 2.45 2.6 5.5 2.6s5.5-1.15 5.5-2.6v-4.35"></path>
+            <path d="M20.6 9.1v5.35"></path>
+          </svg>
+          <span>Google Scholar</span>
+        </a>
+        <a class="profile-link" href="https://www.linkedin.com/in/qingsong-pan-8aa804175/" rel="me">
+          <svg class="profile-link__icon profile-link__icon--linkedin" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="4" y="4" width="16" height="16" rx="2.5"></rect>
+            <path d="M8.2 10.55V16"></path>
+            <path d="M8.2 8.05v.05"></path>
+            <path d="M11.25 16v-5.45"></path>
+            <path d="M11.25 12.95c.35-1.38 1.12-2.4 2.55-2.4 1.7 0 2.55 1.12 2.55 3.05V16"></path>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -59,7 +80,7 @@
         <p class="paper__title">
           <a href="papers/jmp.pdf">Identification of Gross Output Production Functions with a Nonseparable Productivity Shock</a>
         </p>
-        <p class="paper__meta"><span class="tag tag--rr">R&amp;R · Review of Economic Studies</span><span class="tag">Job Market Paper</span></p>
+        <p class="paper__meta"><span class="tag tag--rr">R&amp;R · Review of Economic Studies</span></p>
         <details class="paper__abstract">
           <summary>Abstract</summary>
           <p>We study nonparametric identification of gross-output production functions in which productivity enters nonseparably, relaxing Hicks neutrality, and use the framework to measure the bias of technical change. Under perfect competition, we extend Gandhi et al. (2020) (GNR) to identify output elasticities, and then impose an empirically motivated homogeneity restriction to obtain full identification of the technology. Under imperfect competition with revenue data, markups and returns to scale (RTS) are difficult to separately identify. We therefore calibrate RTS for point identification and show that the implied directions and relative magnitudes of technological bias are invariant to this calibration. Applying the framework to Chinese manufacturing firms (1998–2007), we find that technical change is predominantly capital-biased and least favorable to labor. Yet in the realized data, the marginal product of labor (MPL) rises the most over the decade. A decomposition resolves this apparent paradox: MPL growth is driven primarily by capital and materials deepening through factor complementarities rather than by productivity growth, whereas for capital and materials the opposite pattern holds. These findings point to biased technical change as a distinct force behind the pronounced factor deepening observed over this period.</p>
@@ -104,6 +125,14 @@
           <p>We show that the Klette–Griliches (1996) method, developed to consistently estimate returns to scale using financial statement data, is internally consistent only when a CES price index is employed. However, such a CES price index is rarely observed in practice. We propose a constrained generalized method of moments (GMM) estimator that treats the CES price index as an unknown parameter vector to be estimated, imposing the model-implied restrictions required for identification. Applying our approach to Chinese manufacturing data, we find robust evidence of markedly increasing returns to scale, substantially larger than those implied by existing methods.</p>
         </details>
       </li>
+    </ol>
+
+    <h3 class="group">Work in Progress</h3>
+    <ol class="papers">
+      <li class="paper">
+        <p class="paper__title">From Revenue to Production: Identification and Estimation</p>
+        <p class="paper__byline">with <a href="https://www.vincentmastantuno.com">Vincent Mastantuno</a> and <a href="https://faculty.sdu.edu.cn/zhoulixue/zh_CN/index.htm">Lixue Zhou</a></p>
+      </li>
 
       <li class="paper">
         <p class="paper__title">Shape-Restricted Production Functions: An Application to Allocative Efficiency</p>
@@ -112,14 +141,6 @@
           <summary>Abstract</summary>
           <p>We propose a two-step nonparametric estimator of production functions. In the first step, we estimate the productivity shock from the input demand function using sieve MLE. In the second step, we estimate the production function using Bernstein polynomials after plugging in the estimated productivity shock. The use of Bernstein polynomials makes it easy to impose theory-based shape restrictions on the production function, such as monotonicity and concavity. With the shape restrictions, our second step is a disciplined convex programming (DCP) problem, which has attractive computational properties. Applying our estimator to commonly used production datasets, we find that, while the concavity restriction does not make much difference, imposing the monotonicity restriction can greatly reduce the dispersion of the estimated marginal productivity across firms, which implies much higher efficiency of resource allocation among firms.</p>
         </details>
-      </li>
-    </ol>
-
-    <h3 class="group">Work in Progress</h3>
-    <ol class="papers">
-      <li class="paper">
-        <p class="paper__title">From Revenue to Production: Identification and Estimation</p>
-        <p class="paper__byline">with <a href="https://www.vincentmastantuno.com">Vincent Mastantuno</a> and <a href="https://faculty.sdu.edu.cn/zhoulixue/zh_CN/index.htm">Lixue Zhou</a></p>
       </li>
     </ol>
   </section>
