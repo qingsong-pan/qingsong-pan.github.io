@@ -526,6 +526,20 @@ main {
   color: var(--ink-soft);
 }
 
+.teaching-summary {
+  margin: 0;
+  padding: 0.78rem 0.95rem;
+  border-left: 3px solid rgba(89, 103, 68, 0.78);
+  background: rgba(255, 253, 248, 0.62);
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
+
+.teaching-summary .teaching__role {
+  margin-right: 0.55rem;
+}
+
 .teaching__role {
   color: var(--ink-muted);
   font-family: "IBM Plex Mono", Consolas, monospace;
