@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="QP">
   <rect width="64" height="64" rx="12" fill="#153747"/>
   <path d="M0 0h64v21L0 45z" fill="#234f65" opacity=".48"/>
-  <path d="M13 49h38" fill="none" stroke="#c9bda9" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+  <path d="M9 53h46" fill="none" stroke="#c9bda9" stroke-width="2" stroke-linecap="round" opacity=".9"/>
   <path d="M46 15h7v7" fill="none" stroke="#8a4034" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="32" y="40" text-anchor="middle" fill="#fffdf8" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700">QP</text>
+  <text x="32" y="43" text-anchor="middle" fill="#fffdf8" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700">QP</text>
 </svg>
