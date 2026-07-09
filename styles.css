@@ -171,7 +171,7 @@ main {
   border: 1px solid rgba(201, 189, 169, 0.9);
   border-radius: 6px;
   background: #ebe6da center / cover no-repeat;
-  background-image: url("photo.jpg");
+  background-image: url("photo.jpg?v=20260709");
   box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
