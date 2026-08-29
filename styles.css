@@ -435,6 +435,13 @@ main {
   color: var(--accent-warm);
 }
 
+.tag--new {
+  border-color: rgba(89, 103, 68, 0.32);
+  background: rgba(89, 103, 68, 0.1);
+  color: var(--accent-olive);
+  font-weight: 600;
+}
+
 .paper__abstract {
   margin: 0.72rem 0 0;
 }
