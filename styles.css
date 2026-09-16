@@ -475,18 +475,19 @@ main {
 /* Service and presentations */
 .service-list {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.32rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .service-list li {
-  padding: 0.72rem 0.95rem;
+  padding: 0.5rem 0.8rem;
   border-left: 3px solid var(--accent-olive);
   background: rgba(255, 253, 248, 0.62);
   color: var(--ink-soft);
   font-weight: 500;
+  line-height: 1.4;
 }
 
 .presentation-list {
@@ -515,6 +516,14 @@ main {
 
 .section-details .group:first-of-type {
   margin-top: 0;
+}
+
+#teaching .group {
+  margin: 1.25rem 0 0.6rem;
+}
+
+#teaching .teaching {
+  gap: 0.35rem;
 }
 
 .teaching {
